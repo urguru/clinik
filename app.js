@@ -22,9 +22,6 @@ app.post('/upload',upload.single('myFile'),async (req, res) => {
             if(!req.file)
             {
                 throw ({message:"The file is empty.Try Again"})
-            }else if(req.file.mimetype!='text/csv')
-            {
-                throw({message:"The file is not a CSV file"})
             }
             else{
                 data=[]
