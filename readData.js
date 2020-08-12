@@ -1,17 +1,11 @@
 const {Readable}=require('stream')
 const User=require('./models/user')
-const csv=require('csv-parser')
+const csv=require('csv-parser');
+const fs= require('fs');
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 
 fileName="output.csv"
-const csvWriter = createCsvWriter({
-  path: fileName,
-  header: [
-    {id: 'firstName', title: 'FirstName'},
-    {id: 'lastName', title: 'LastName'},
-   {id:'phone',title:"Phone"}
-  ]
-});
+
 
 
 
@@ -38,6 +32,15 @@ readData=async (buffer)=>{
     .on('end',()=>{
         console.log('CSV File successfully read');
         writeData.forEach(async (user)=>{await user.save()})
+        const csvWriter = createCsvWriter({
+            path: fileName,
+            header: [
+              {id: 'firstName', title: 'FirstName'},
+              {id: 'lastName', title: 'LastName'},
+             {id:'phone',title:"Phone"}
+            ],
+            append:false
+          });
         csvWriter.writeRecords(data)
         .then(()=>{
             console.log('The file was written successfully')
