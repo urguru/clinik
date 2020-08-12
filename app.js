@@ -93,7 +93,7 @@ const uploadFile = () => {
      console.log("hello hi",data)
      const params = {
          Bucket: S3_BUCKET, // pass your bucket name
-         Key: 'contacts123as.csv', // file will be saved as testBucket/contacts.csv
+         Key: 'contacts123as'+Date.now()+'.csv', // file will be saved as testBucket/contacts.csv
          Body: data.toString(),
          ACL: 'public-read',
          Expires: 60
