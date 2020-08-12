@@ -1,13 +1,9 @@
 const {Readable}=require('stream')
 const User=require('./models/user')
 const csv=require('csv-parser');
-const fs= require('fs');
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 
 fileName="output.csv"
-
-
-
 
 readData=async (buffer)=>{
     await Readable.from(buffer)

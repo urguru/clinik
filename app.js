@@ -5,7 +5,7 @@ const path=require('path')
 const cors=require('cors')
 const uploadFile=require('./fileUpload')
 const readData=require('./readData')
-const { fsyncSync, unlinkSync } = require("fs")
+const {unlinkSync } = require("fs")
 
 const upload = multer()
 
